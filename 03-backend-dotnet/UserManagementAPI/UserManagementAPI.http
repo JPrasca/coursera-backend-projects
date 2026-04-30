@@ -1,20 +1,24 @@
 @UserManagementAPI_HostAddress = http://localhost:5066
+@AuthToken = Bearer mi-token-valido
 
 ### Obtener todos los usuarios
 GET {{UserManagementAPI_HostAddress}}/users
 Accept: application/json
+Authorization: {{AuthToken}}
 
 ###
 
 ### Obtener un usuario específico por ID (ej. ID 1)
 GET {{UserManagementAPI_HostAddress}}/users/1
 Accept: application/json
+Authorization: {{AuthToken}}
 
 ###
 
 ### Crear un nuevo usuario
 POST {{UserManagementAPI_HostAddress}}/users
 Content-Type: application/json
+Authorization: {{AuthToken}}
 
 {
   "name": "Carlos Gomez",
@@ -27,6 +31,7 @@ Content-Type: application/json
 ### Actualizar un usuario existente (ej. actualizar a Alice, ID 1)
 PUT {{UserManagementAPI_HostAddress}}/users/1
 Content-Type: application/json
+Authorization: {{AuthToken}}
 
 {
   "id": 1,
@@ -40,5 +45,6 @@ Content-Type: application/json
 ### Eliminar un usuario (ej. eliminar a Bob, ID 2)
 DELETE {{UserManagementAPI_HostAddress}}/users/2
 Accept: application/json
+Authorization: {{AuthToken}}
 
 ###

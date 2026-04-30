@@ -4,12 +4,19 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Configuración de serialización JSON (CamelCase por defecto)
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+});
 
 var app = builder.Build();
 
@@ -88,7 +95,12 @@ app.MapGet("/users", (int skip = 0, int take = 50) =>
         return Results.Problem("An error occurred while retrieving users: " + ex.Message);
     }
 })
-.WithName("GetAllUsers");
+.WithName("GetAllUsers")
+.WithOpenApi(operation => new(operation)
+{
+    Summary = "Obtener todos los usuarios",
+    Description = "Retorna una lista paginada de todos los usuarios registrados."
+});
 
 // GET: Retrieve a specific user by ID
 app.MapGet("/users/{id}", (int id) =>
@@ -103,7 +115,12 @@ app.MapGet("/users/{id}", (int id) =>
         return Results.Problem("An error occurred while retrieving the user: " + ex.Message);
     }
 })
-.WithName("GetUserById");
+.WithName("GetUserById")
+.WithOpenApi(operation => new(operation)
+{
+    Summary = "Obtener un usuario por ID",
+    Description = "Retorna los detalles de un usuario específico usando su ID."
+});
 
 // POST: Add a new user
 app.MapPost("/users", (User newUser) =>
@@ -127,7 +144,12 @@ app.MapPost("/users", (User newUser) =>
         return Results.Problem("An error occurred while creating the user: " + ex.Message);
     }
 })
-.WithName("CreateUser");
+.WithName("CreateUser")
+.WithOpenApi(operation => new(operation)
+{
+    Summary = "Crear un nuevo usuario",
+    Description = "Agrega un nuevo usuario a la lista en memoria."
+});
 
 // PUT: Update an existing user's details
 app.MapPut("/users/{id}", (int id, User updatedUser) =>
@@ -159,7 +181,12 @@ app.MapPut("/users/{id}", (int id, User updatedUser) =>
         return Results.Problem("An error occurred while updating the user: " + ex.Message);
     }
 })
-.WithName("UpdateUser");
+.WithName("UpdateUser")
+.WithOpenApi(operation => new(operation)
+{
+    Summary = "Actualizar un usuario",
+    Description = "Actualiza los datos de un usuario existente."
+});
 
 // DELETE: Remove a user by ID
 app.MapDelete("/users/{id}", (int id) =>
@@ -180,7 +207,12 @@ app.MapDelete("/users/{id}", (int id) =>
         return Results.Problem("An error occurred while deleting the user: " + ex.Message);
     }
 })
-.WithName("DeleteUser");
+.WithName("DeleteUser")
+.WithOpenApi(operation => new(operation)
+{
+    Summary = "Eliminar un usuario",
+    Description = "Elimina un usuario específico del sistema usando su ID."
+});
 
 app.Run();
 
