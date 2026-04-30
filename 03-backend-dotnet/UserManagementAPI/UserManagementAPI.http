@@ -1,0 +1,44 @@
+@UserManagementAPI_HostAddress = http://localhost:5066
+
+### Obtener todos los usuarios
+GET {{UserManagementAPI_HostAddress}}/users
+Accept: application/json
+
+###
+
+### Obtener un usuario específico por ID (ej. ID 1)
+GET {{UserManagementAPI_HostAddress}}/users/1
+Accept: application/json
+
+###
+
+### Crear un nuevo usuario
+POST {{UserManagementAPI_HostAddress}}/users
+Content-Type: application/json
+
+{
+  "name": "Carlos Gomez",
+  "email": "carlos@example.com",
+  "department": "Ventas"
+}
+
+###
+
+### Actualizar un usuario existente (ej. actualizar a Alice, ID 1)
+PUT {{UserManagementAPI_HostAddress}}/users/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Alice Smith Modificada",
+  "email": "alice.nueva@example.com",
+  "department": "Legal"
+}
+
+###
+
+### Eliminar un usuario (ej. eliminar a Bob, ID 2)
+DELETE {{UserManagementAPI_HostAddress}}/users/2
+Accept: application/json
+
+###

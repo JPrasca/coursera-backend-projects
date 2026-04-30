@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-fundamentos", "01-fundamentos", "{79B6BAD6-EAB8-DCE2-3787-8C813B47327E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventorySystem", "01-fundamentos\InventorySystem.csproj", "{B03AEFB8-9C55-012D-98A9-5A4D56426A8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B03AEFB8-9C55-012D-98A9-5A4D56426A8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B03AEFB8-9C55-012D-98A9-5A4D56426A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B03AEFB8-9C55-012D-98A9-5A4D56426A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B03AEFB8-9C55-012D-98A9-5A4D56426A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B03AEFB8-9C55-012D-98A9-5A4D56426A8D} = {79B6BAD6-EAB8-DCE2-3787-8C813B47327E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DCA71FB-ACED-4119-B7EB-3422395D5AF3}
+	EndGlobalSection
+EndGlobal
